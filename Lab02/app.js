@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var debug = require('debug')('app');
 
-const indexRouter = require('./routes/index');
+const routes = require('./routes/index');
 
 var app = express();
 
@@ -26,7 +26,7 @@ app.use('/css', express.static(__dirname + '/public/bootstrap/css')); // redirec
 app.use('/css', express.static(__dirname + '/public/stylesheets'));
 app.use('/webfonts', express.static(__dirname + '/public/fonts/webfonts/')); 
 
-app.get('/', indexRouter);
+app.use('/', routes);
 
 // catch favicon requests and respond
 app.use('/favicon.ico', (req, res) => res.status(204));
